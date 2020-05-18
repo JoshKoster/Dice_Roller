@@ -8,20 +8,24 @@
 </head>
 <body>
    <div id="roll">
-    <label for="number-of-dice">Enter a number of dice:</label>
-    <input type="text" name="number-of-dice" id="number-of-dice">
+    <label id ="number-of-rolls">Number Of Dice Rolls:<img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/lg/57/game-die_1f3b2.png" alt="dice photo" height="100" width="100"></label>
+    <input type="text" id="dice-roll-display" name="number-of-rolls" required
+    minlength="4" maxlength="8" size="8"></input>
+    <button id="roll" type="button">Roll!</button>
 
-    <button id="roll-dies">Roll!</button>
-    <button id="all-rolls">
+    <br>
+    <br>
 
-        <ol>
+    <button id="show-all">Show All Rolls</button>
+
+        <ol id="number-of-dice-roll">
             <li></li>
             <li></li>
             <li></li>
             <li></li>
             <li></li>
             <li></li>
-        </ol>Show all Rolls</button>
+        </ol>
     </div>
     <script src="./scripts/main.js"></script>
 </body>
