@@ -1,52 +1,41 @@
-const rollButton = document.querySelector("#roll-button")
-const dieRolls = []
-
-// rollButton.addEventListener("click", function() {
-    
-// })
-
-const sides = ["One" , "Two" , "Three" , "Four" , "Five" , "Six"];
-const roll = () => sides[Math.floor(Math.random() * 6)]
-
-const rolls = (n) => {
-    const result = [];
-    for (let i = 0; i < n; i++) {
-        result.push(roll());
-    }
-    return result;
-};
-
-const count = (rolls) => {
-    const result = new Map();
-    for (const roll of rolls) {
-        result.set(
-            roll,
-            1 + (result.get(roll) || 0));
-    }
-    return result;
-}
-
-let diceRollDisplay = document.querySelector('#dice-roll-display');
-diceRollDisplay.addEventListener("click", function(){
-    console.log("dice-roll-display");
-})
-
-
-let roll = document.querySelector('#roll');
-roll.addEventListener("click", function(){
-    console.log('roll');
-})
-
-var dieRolls = new Array();
-
-
 let showAll = document.querySelector('#show-All');
-showAll.addEventListener("click", function(){
-    console.log("#show-all");
-})
+let diceRollInput = document.querySelector('#dice-roll-input');
+let numberOfDiceRoll = document.querySelector('number-of-dice-roll');
+let letsRoll = document.querySelector('#lets-roll');
 
 
-let numberOfDiceRoll = document.querySelector('#number-of-dice-roll');
-numberOfDiceRoll.addEventListener("click", function(){
-    console.log("number-of-dice-roll");
+
+var dieRolls = []
+
+
+
+letsRoll.addEventListener("click", function () {
+    console.log("lets-roll");
+    console.log(diceRollInput.value)
+    let rolls = diceRollInput.value
+    console.log(rolls)
+
+    let letsPlay = 0
+
+    for (let i = 0; i < rolls; i++) {
+     letsPlay = Math.floor(Math.random() * 6) + 1;
+    console.log('You rolled a ' + letsPlay);
+
+    dieRolls.push(letsPlay)
+    
+    
+    }
+    console.log(dieRolls)
+
+   
+    var total = ["1", "2", "3", "4", "5", "6"];
+    var text = "16";
+    var i;
+    for (i = 0; i < total.length; i++) {
+      text += total[i] + "<br>";
+    }
+    document.getElementById("total-number").innerHTML = text;
+
+
+
 })
