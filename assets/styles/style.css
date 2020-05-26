@@ -1,0 +1,93 @@
+*{
+    box-sizing: border-box;
+}
+
+:root{
+    --button-text-color:brown;
+}
+
+body{
+    display: flex;
+    background-image: url('./Craps-Table-at-a-Casino.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1100px;
+    color: azure;
+    justify-content: center;
+    flex-wrap: wrap;
+   }
+   main{
+       height: 300px;
+       
+       
+   }
+
+   label{
+       font-size: 40px;
+   }
+
+   #show, #roll, #reset{
+       color:var(--button-text-color);
+       font-size: 13px;
+   }
+   #total, #showButton{
+       display: flex;
+       justify-content: center;
+   }
+   #show{
+       height: fit-content;
+   }
+
+   #allrolls{
+       display: flex;
+       flex-wrap: wrap;
+       flex-direction: column;
+       height: 500px;
+   }
+  li{
+      border: solid 3px rgb(70, 24, 24);
+      border-right:solid 2px red;
+      border-top:solid 18px red;
+      border-radius: 2px;
+      margin: 15px;
+      padding: 5px;
+      padding-left: 8px;
+      padding-top: 10px;
+      padding-right: 20px;
+      width: 30px;
+      background-color:rgb(136, 46, 14);
+      
+  }
+  #lucky{
+      position:relative;
+      bottom:200px;
+      display: flex;
+      align-items: center;
+      justify-content:center;
+      font-size: 54px;
+      color: var(--button-text-color);
+     height: fit-content;
+      margin: 100px;
+      padding: 2px;
+      font-family: 'Bungee Inline', cursive;
+      margin-top:1000px;
+  }
+
+  @media(max-width:1115px ){
+      body{
+          height:1375px;
+      }
+
+      @media(max-width:900px){
+
+        body{
+            height:1500px;
+        }
+       #lucky{
+           display: flex;
+           
+           margin-left:500px;
+           justify-content: center;
+       }
+      
+  }
