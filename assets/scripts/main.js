@@ -1,56 +1,73 @@
-let dieRolls = [] //array for roll results
+const diceNumber = document.querySelector('#dice-number');
+const rollDice = document.querySelector('#roll-dice');
+const total = document.querySelector('#total');
+const showAll = document.querySelector('#show-all');
+const showRolls = document.querySelector('#show-rolls');
+const reset = document.querySelector('#reset');
+const diceSides = document.querySelector('#dice-sides');
 
+let dieRolls = [];
+let universal = [];
+diceSides.value = 6;
+diceNumber.value = 6;
 
-
-let roll = document.querySelector('#roll') // roll button
-let input = document.querySelector('#input') //input number
-let total = document.querySelector('#total')
-let showRolls = document.querySelector('#show')
-let sides = document.querySelector('#sides')
-
-
-roll.addEventListener('click', function () {
-    let dieNumber = parseInt(input.value) //the input value
-    
-  
-    while (dieRolls.length < dieNumber) { //while die rolls length is less than te number of die
-        dieRolls.push(Math.floor(Math.random() * parseInt(sides.value) + 1 )) //push a random number to dieRolls array
-
-        
-        let sum = dieRolls.reduce(function (total, amount) { //reduce array to 
-            return total + amount
-        })
-    
-
-        total.innerText = 'The sum of the roll is' + ' ' + sum
-
-        console.log(dieRolls)
-    
+rollDice.addEventListener('click', function () {
+  let numberOfDice = diceNumber.value;
+  loopCount = 0;
+  while (loopCount < numberOfDice) {
+    if (diceSides.value >= 7) {
+      let rolledDice = Math.floor(Math.random() * diceSides.value) + 1;
+      dieRolls.push(rolledDice);
+      let sumTotal = dieRolls.reduce((v, i) => (v + i));
+      total.innerHTML = sumTotal;
+    } else {
+      let universalRandom = Math.floor(Math.random() * diceSides.value);
+      dieRolls.push("&#x268" + universalRandom + ";");
+      universal.push(universalRandom + 1);
+      let elseTotal = universal.reduce((v, i) => (v + i));
+      total.innerHTML = elseTotal;
     }
-   
+    console.log(dieRolls);
 
-}) // event listner while i < array .length create new html element with inner text of current index.
-showRolls.addEventListener('click', function () { // <= listen for click
-    let i = 0 // let index = 0
+    loopCount++
+  }
+  rollDice.disabled = true;
+})
 
-    while (i < dieRolls.length) { // while index is less than the length of the array
-
-        dieRolls.join() // join array to make it a string 
-
-        let newItem = document.createElement('li') // create a newItem variable equal to a  new list item 
-
-        let itemContent = document.createTextNode(dieRolls[i]) // itemContent = text node of array index
-
-        newItem.appendChild(itemContent) // append new content to new list item
-        let list = document.querySelector('#allrolls')// add variable to my ordered list
-    
-
-
-        list.appendChild(newItem)// append child to my is
-
-        console.log(list)
-        
-        i++// incriment index
+showAll.addEventListener('click', function () {
+  if (total.innerHTML === "") {
+    rollDice.click();
+    showAll.click();
+  } else {
+    let counter = 0;
+    while (counter < dieRolls.length) {
+      let diceSplit = "";
+      for (i = 0; i < dieRolls.length; i++) {
+        diceSplit = dieRolls[i];
+        if (diceSides.value >= 7) {
+          const newListItem = '<li style="float: none;">' + diceSplit + '</li>';
+          showRolls.innerHTML += newListItem;
+          counter++
+        } else {
+          const newListItem = '<li style="float: left;">' + diceSplit + '</li>';
+          showRolls.innerHTML += newListItem;
+          counter++
+        }
+      }
     }
-    dieRolls = []
+  }
+  showAll.disabled = true;
+})
+
+reset.addEventListener('click', function () {
+  dieRolls = [];
+  universal = [];
+  total.innerHTML = '';
+  showRolls.innerHTML = '';
+  diceNumber.value = null;
+  diceSides.value = 6;
+  diceNumber.value = 6;
+  diceSides.focus();
+  rollDice.disabled = false;
+  showAll.disabled = false;
 })
