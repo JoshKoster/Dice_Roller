@@ -1,41 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<link rel="stylesheet" href="./assets/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet">
 </head>
-
 <body>
-<main>
-    <label for="input">🎲  </label>
-    <input type="text" id="input" onfocus="this.value=''" value="HOW MANY DIE?..." name="input">
+    <div id="container">
+    <label for="dice-sides">How Many Dice Sides?</label>
+    <br />
+    <input type="number" name="dice-sides" min="1" id="dice-sides" required>
+    <br />
+    <br />
+    <label for="dice-number">How Many Dice?</label>
+    <br />
+    <input type="number" name="dice-number" min="1" id="dice-number" required>
+    
+    
+    <br />
+    <br />
+    <button id="roll-dice">Roll Dice</button>
+    <button id="show-all">Show All Rolls</button>
+    <button id="reset">Reset</button>
+    <p id="total"></p>
+    <ol id="show-rolls">
 
-    <label for="sides"> </label>
-    <input type="text" id="sides" onfocus="this.value=''" value="HOW MANY SIDES
-    ?..." name="sides">
-
-    <button id="roll">ROLL!</button>
-    <button id="reset" onclick="window.location.reload();">Reset</button>
-    <div id="total">
-    </div>
-    <div id="showButton">
-    <button id="show">Show all rolls</button>
-
-    <ol id="allrolls">
 
     </ol>
 </div>
-</main>
-
-<div id="lucky">
-    <p> TRY YOUR LUCK!</p>
-</div>
-
-    <script src="./assets/main.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
-
 </html>
